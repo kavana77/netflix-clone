@@ -5,8 +5,8 @@ import Poster from "../assets/Header/Poster.png";
 import IMDB from "../assets/Header/IMDB.png";
 import Tomatoes from "../assets/Header/Tomatoes.png";
 
-const API_KEY = "98e19f6510msha80240eb72caf75p1211c4jsn187a8c742c7b";
-const API_HOST = "https://rapidapi.com";
+const API_KEY = "9vXmr2lxYbpLlmjIN5jJs6OvCWGHtQnRYJAwnTjG";
+const API_HOST = "https://api.watchmode.com";
 
 interface Movie {
     title: string;
@@ -35,6 +35,7 @@ export default function Header() {
             const response = await fetch(
                 `${API_HOST}/3/search/movie?query=${movieName}&api_key=${API_KEY}`
             );
+            
 
             if (!response.ok) {
                 throw new Error("Could not fetch movie data");
@@ -44,7 +45,7 @@ export default function Header() {
             if (data.results.length > 0) {
                 const movie = data.results[0];
                 setFeaturedMovie(movie);
-                setPoster(`https://rapidapi.com/t/p/original${movie.backdrop_path}`);
+                setPoster(`https://api.watchmode.com/t/p/original${movie.backdrop_path}`);
             } else {
                 setFeaturedMovie(DEFAULT_MOVIE);
                 setPoster(Poster);
