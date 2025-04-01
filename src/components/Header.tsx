@@ -6,7 +6,7 @@ import IMDB from "../assets/Header/IMDB.png";
 import Tomatoes from "../assets/Header/Tomatoes.png";
 
 const API_KEY = "9vXmr2lxYbpLlmjIN5jJs6OvCWGHtQnRYJAwnTjG";
-const API_HOST = "https://api.watchmode.com";
+const API_HOST = "https://api.watchmode.com/v1/";
 
 interface Movie {
     title: string;
@@ -19,7 +19,7 @@ interface Movie {
 const DEFAULT_MOVIE: Movie = {
     title: "John Wick 3 : Parabellum",
     backdrop_path: "",
-    overview: "John Wick is on the run after killing a member of the international assassins guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere..",
+    overview: "John Wick is on the run after killing a member of the international assassins guild...",
     vote_average: 86.0,
     vote_count: 97,
 };
@@ -33,19 +33,25 @@ export default function Header() {
     async function fetchMovie(movieName: string): Promise<void> {
         try {
             const response = await fetch(
-                `${API_HOST}/3/search/movie?query=${movieName}&api_key=${API_KEY}`
+                `${API_HOST}search/?apiKey=${API_KEY}&search_field=name&search_value=${encodeURIComponent(movieName)}`
             );
-            
 
             if (!response.ok) {
-                throw new Error("Could not fetch movie data");
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
             }
 
             const data = await response.json();
-            if (data.results.length > 0) {
-                const movie = data.results[0];
-                setFeaturedMovie(movie);
-                setPoster(`https://api.watchmode.com/t/p/original${movie.backdrop_path}`);
+            console.log("Fetched movie data:", data)
+            if (data.title_results.length > 0) {
+                const movie = data.title_results[0];
+                setFeaturedMovie({
+                    title: movie.name || "Unknown Title",
+                    backdrop_path: movie.image_url || "",
+                    overview: movie.plot_overview || "No overview available.",
+                    vote_average: movie.user_rating || 0,
+                    vote_count: movie.vote_count || 0,
+                });
+                setPoster(movie.image_url || Poster);
             } else {
                 setFeaturedMovie(DEFAULT_MOVIE);
                 setPoster(Poster);
@@ -82,7 +88,7 @@ export default function Header() {
                             {featuredMovie.vote_average.toFixed(1)}/100
                         </span>
                         <span className="flex justify-center gap-2 text-sm">
-                            <img src={Tomatoes} className="w-4 h-4"/> 
+                            <img src={Tomatoes} className="w-4 h-4" />
                             {featuredMovie.vote_count} votes
                         </span>
                     </div>
