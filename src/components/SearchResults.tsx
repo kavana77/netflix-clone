@@ -34,6 +34,7 @@ export default function SearchResults() {
                 return response.json();
             })
             .then(data => {
+                console.log("API Response: ", data)
                 setMovies(data.title_results || []);
             })
             .catch(err => {
@@ -42,13 +43,17 @@ export default function SearchResults() {
             })
             .finally(() => setLoading(false));
     }, [searchQuery]);
+
     const movieToDisplay = movies.length > 0 ? movies[0] : null;
+
     return (
         <div className="container mx-auto px-4 py-6 text-white">
             <h1 className="text-2xl font-bold mb-4">Search Results for "{searchQuery}"</h1>
+
             {loading && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
             {!loading && !movieToDisplay && !error && <p>No results found.</p>}
+
             {movieToDisplay && (
                 <div className="bg-black p-6 rounded-lg shadow-lg space-y-4 max-w-xl mx-auto">
                     {/* Movie Title and Year */}
