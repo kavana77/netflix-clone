@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 const API_KEY = "9vXmr2lxYbpLlmjIN5jJs6OvCWGHtQnRYJAwnTjG";
 const API_HOST = "https://api.watchmode.com/v1/";
@@ -15,7 +14,6 @@ interface Movie {
 }
 
 export default function SearchResults() {
-    const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const searchQuery = queryParams.get("q") || "";
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -44,19 +42,13 @@ export default function SearchResults() {
             })
             .finally(() => setLoading(false));
     }, [searchQuery]);
-
-    // Select the first movie from the results or display a message if no movie is available
     const movieToDisplay = movies.length > 0 ? movies[0] : null;
-
     return (
         <div className="container mx-auto px-4 py-6 text-white">
             <h1 className="text-2xl font-bold mb-4">Search Results for "{searchQuery}"</h1>
-
             {loading && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
             {!loading && !movieToDisplay && !error && <p>No results found.</p>}
-
-            {/* Display a single movie card */}
             {movieToDisplay && (
                 <div className="bg-black p-6 rounded-lg shadow-lg space-y-4 max-w-xl mx-auto">
                     {/* Movie Title and Year */}
