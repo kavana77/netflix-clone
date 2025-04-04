@@ -4,9 +4,8 @@ import Navbar from "./Navbar";
 import Poster from "../assets/Header/Poster.png";
 import IMDB from "../assets/Header/IMDB.png";
 import Tomatoes from "../assets/Header/Tomatoes.png";
+import { API_HOST,API_KEY } from "../config/api";
 
-const API_KEY = "9vXmr2lxYbpLlmjIN5jJs6OvCWGHtQnRYJAwnTjG";
-const API_HOST = "https://api.watchmode.com/v1/";
 
 interface Movie {
     title: string;

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
+import { API_KEY,API_HOST } from "../config/api";
 
-const API_KEY = "9vXmr2lxYbpLlmjIN5jJs6OvCWGHtQnRYJAwnTjG";
-const API_HOST = "https://api.watchmode.com/v1/";
 
 interface Movie {
     id: number;
