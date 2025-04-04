@@ -12,6 +12,7 @@ interface Movie {
     title: string;
     backdrop_path: string;
     overview: string;
+    year: number;
     vote_average: number;
     vote_count: number;
 }
@@ -20,6 +21,7 @@ const DEFAULT_MOVIE: Movie = {
     title: "John Wick 3 : Parabellum",
     backdrop_path: "",
     overview: "John Wick is on the run after killing a member of the international assassins guild...",
+    year: 0,
     vote_average: 86.0,
     vote_count: 97,
 };
@@ -48,6 +50,7 @@ export default function Header() {
                     title: movie.name || "Unknown Title",
                     backdrop_path: movie.image_url || "",
                     overview: movie.plot_overview || "No overview available.",
+                    year: movie.year,
                     vote_average: movie.user_rating || 0,
                     vote_count: movie.vote_count || 0,
                 });
@@ -83,6 +86,7 @@ export default function Header() {
                 <div className="bg-transparent p-6 text-white max-w-lg rounded-lg shadow-lg relative z-10">
                     <h1 className="text-4xl font-bold mb-2">{featuredMovie.title}</h1>
                     <div className="flex items-center space-x-4 mb-4">
+                        <span>Movie Year:{featuredMovie.year}</span>
                         <span className="flex items-center gap-2 text-yellow-400 px-2 py-1 rounded text-sm">
                             <img src={IMDB} alt="IMDb" className="w-8 h-4" />
                             {featuredMovie.vote_average.toFixed(1)}/100
