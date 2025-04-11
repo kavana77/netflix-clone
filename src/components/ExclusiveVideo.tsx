@@ -1,45 +1,11 @@
-import { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import lamb from "../assets/ExclusiveVideos/Thumbnails1.png";
-import suicidesquad from "../assets/ExclusiveVideos/Thumbnails2.png";
-import horror from "../assets/ExclusiveVideos/Thumbnails3.png";
-import play from "../assets/ExclusiveVideos/Play.png";
+import play from "../assets/exclusiveVideos/play.png";
+import { videos } from "../utils/constant";
+import useHorizontalScroll from "../hooks/useHorizontalScroll";
 
-interface Video {
-  title: string;
-  thumbnail: string;
-  videoUrl: string;
-}
-
-const videos: Video[] = [
-  {
-    title: "Lamb (2021) Trailer",
-    thumbnail: lamb,
-    videoUrl: "https://www.youtube.com/watch?v=hnEwJKVWjFM",
-  },
-  {
-    title: "The Suicide Squad: John Cena Interview",
-    thumbnail: suicidesquad,
-    videoUrl: "https://www.youtube.com/watch?v=Xk8FAD_jPc4",
-  },
-  {
-    title: "Will there be a new era of horror?",
-    thumbnail: horror,
-    videoUrl: "https://www.youtube.com/embed/vs0MeU-H3mE",
-  },
-];
 
 export default function ExclusiveVideos() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (offset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        left: scrollRef.current.scrollLeft + offset,
-        behavior: "smooth",
-      });
-    }
-  };
+  const {scrollRef,scroll} = useHorizontalScroll()
 
   return (
     <section className="px-8 py-20">

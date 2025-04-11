@@ -1,31 +1,10 @@
-import { useRef } from "react";
 import {FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Keanu from "../assets/FeaturedCast/Poster1.png";
-import Ryan from "../assets/FeaturedCast/Poster2.png";
-import Timothee from "../assets/FeaturedCast/Poster3.png";
-import Chloe from "../assets/FeaturedCast/Poster4.png";
-
-
-interface Cast {
-  name: string;
-  image: string;
-}
-
-const casts: Cast[] = [
-  { name: "Keanu Reeves", image: Keanu },
-  { name: "Ryan Reynolds", image: Ryan },
-  { name: "Timothée Chalamet", image: Timothee },
-  { name: "Chloë Grace Moretz", image: Chloe },
-];
+import { casts } from "../utils/constant";
+import useHorizontalScroll from "../hooks/useHorizontalScroll";
 
 export default function FeaturedCasts() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const {scrollRef,scroll} = useHorizontalScroll()
 
-  const scroll = (offset: number) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft += offset;
-    }
-  };
 
   return (
     <section className="px-8 py-20">

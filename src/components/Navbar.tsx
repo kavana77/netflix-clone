@@ -1,8 +1,8 @@
 import { FormEvent } from "react";
 import { useState } from "react";
-import logo from "../assets/Header/logo.png";
-import search from "../assets/Header/Search.png";
-import icon from "../assets/Header/Icon.png";
+import logo from "../assets/header/logo.png";
+import search from "../assets/header/search.svg";
+import icon from "../assets/header/icon.svg";
 import { useDispatch,useSelector } from "react-redux";
 import {RootState} from "../redux/store";
 import { removeSearchedMovie } from "../redux/searchSlice";

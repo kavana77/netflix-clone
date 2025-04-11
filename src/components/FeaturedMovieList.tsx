@@ -1,61 +1,11 @@
-import { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import FeaturedMovie from "./FeaturedMovie";
-import stranger from "../assets/FeaturedMovie/Poster1.png";
-import batman from "../assets/FeaturedMovie/Poster2.png";
-import SpiderMan from "../assets/FeaturedMovie/Poster3.png";
-import Dunkirk from "../assets/FeaturedMovie/Poster4.png";
-import { MovieList } from "../types/MovieList.";
-const movies: MovieList[] = [
-  {
-    title: "Stranger Things",
-    poster: stranger,
-    year: "USA, 2016",
-    imdbRating: "860/100",
-    tomatoRating: "97%",
-    genre: "Action, Adventure, Horror",
-    favorite: false,
-  },
-  {
-    title: "Batman Begins",
-    poster: batman,
-    year: "USA, 2025",
-    imdbRating: "82.0/100",
-    tomatoRating: "70%",
-    genre: "Action, Adventure",
-    favorite: false,
-  },
-  {
-    title: "Spider-Man : Into The Spider Verse",
-    poster: SpiderMan,
-    year: "USA, 2018",
-    imdbRating: "84.0/100",
-    tomatoRating: "87%",
-    genre: "Animation,Action, Adventure",
-    favorite: false,
-  },
-  {
-    title: "Dunkirk",
-    poster: Dunkirk,
-    year: "USA, 2017",
-    imdbRating: "78.0/100",
-    tomatoRating: "94%",
-    genre: "Action, Drama, History",
-    favorite: false,
-  },
-];
+import { movies } from "../utils/constant";
+import useHorizontalScroll from "../hooks/useHorizontalScroll";
 
 export default function FeaturedMovieList() {
-        const scrollRef = useRef<HTMLDivElement>(null);
-    
-        const scroll = (offset: number) => {
-          if (scrollRef.current) {
-            scrollRef.current.scrollTo({
-              left: scrollRef.current.scrollLeft + offset,
-              behavior: "smooth",
-            });
-          }
-        };
+  const {scrollRef,scroll} = useHorizontalScroll()
+
   return (
     <section className="px-8 py-20">
       {/* Header */}

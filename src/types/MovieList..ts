@@ -1,4 +1,4 @@
-export interface MovieList {
+export interface IMovieList {
     title: string;
     poster: string;
     year: string;

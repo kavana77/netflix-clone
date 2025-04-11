@@ -1,16 +1,8 @@
-import facebookIcon from "../assets/Footer/facebookIcon.png";
-import instagramIcon from "../assets/Footer/instagramIcon.png";
-import twitterIcon from "../assets/Footer/twitterIcon.png";
-import youtubeIcon from "../assets/Footer/youtubeIcon.png";
+import { icons } from "../utils/constant"
 
 
 export default function Footer(){
-    const icons = {
-        facebook: facebookIcon,
-        instagram: instagramIcon,
-        twitter: twitterIcon,
-        youtube: youtubeIcon,
-      };
+
     return(
         <footer className="text-center py-6">
             

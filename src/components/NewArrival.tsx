@@ -1,18 +1,10 @@
 import { FaHeart } from "react-icons/fa";
-import imdbLogo from "../assets/New Arrival/Icons/IMDB.png";
-import tomatoesLogo from "../assets/New Arrival/Icons/Tomatoes.png";
+import imdbLogo from "../assets/newArrival/icons/imdb.svg";
+import tomatoesLogo from "../assets/newArrival/icons/heart.svg";
+import { IMovieList } from "../types/movieList.";
 
-interface Movie {
-  title: string;
-  poster: string;
-  year: string;
-  imdbRating: string;
-  tomatoRating: string;
-  genre: string;
-  favorite?: boolean;
-}
 
-export default function NewArrival({ movie }: { movie: Movie }) {
+export default function NewArrival({ movie }: { movie: IMovieList }) {
   return (
     <div className="w-[250px] flex-shrink-0 text-center">
       {/* Poster Section */}

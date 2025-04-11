@@ -1,33 +1,18 @@
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import Poster from "../assets/Header/Poster.png";
-import IMDB from "../assets/Header/IMDB.png";
-import Tomatoes from "../assets/Header/Tomatoes.png";
-import { API_HOST,API_KEY } from "../config/api";
+import Poster from "../assets/header/poster.png";
+import IMDB from "../assets/header/imdb.svg";
+import Tomatoes from "../assets/header/tomatoes.svg";
+import { API_KEY,API_HOST } from "../envConfig";
+import { DEFAULT_MOVIE } from "../utils/constant";
+import {IMovie} from "../types/movie"
 
 
-interface Movie {
-    title: string;
-    backdrop_path: string;
-    overview: string;
-    year: number;
-    vote_average: number;
-    vote_count: number;
-}
-
-const DEFAULT_MOVIE: Movie = {
-    title: "John Wick 3 : Parabellum",
-    backdrop_path: "",
-    overview: "John Wick is on the run after killing a member of the international assassins guild...",
-    year: 0,
-    vote_average: 86.0,
-    vote_count: 97,
-};
 
 export default function Header() {
     const [movieQuery, setMovieQuery] = useState("");
-    const [featuredMovie, setFeaturedMovie] = useState<Movie>(DEFAULT_MOVIE);
+    const [featuredMovie, setFeaturedMovie] = useState<IMovie>(DEFAULT_MOVIE);
     const [poster, setPoster] = useState<string>(Poster);
     const navigate = useNavigate();
 
@@ -67,7 +52,7 @@ export default function Header() {
         e.preventDefault();
         if (movieQuery.trim()) {
             fetchMovie(movieQuery);
-            navigate(`/search?q=${movieQuery}`);
+            navigate(`/search?q=${movieQuery}`,{replace:true});
         }
     }
 

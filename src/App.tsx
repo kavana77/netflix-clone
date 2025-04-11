@@ -1,20 +1,12 @@
-import {  createBrowserRouter, Route,createRoutesFromElements,RouterProvider} from "react-router-dom";
-import Home from "./pages/Home";
-import RootLayout from "./layout/RootLayout";
-import SearchResults from "./pages/SearchResults";
- function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout/>} >
-          <Route path="/" element={<Home/>} />             
-          <Route path="/search" element={<SearchResults/>} />
-      </Route>
-    )
-  )
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+function App() {
   return (
-   <RouterProvider router={router}/>
-  )
+    <Provider store={store}>
+      <RouterProvider router={router} />;
+    </Provider>
+  );
 }
-export default App
-
-
+export default App;
