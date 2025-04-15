@@ -32,7 +32,7 @@ export default function Header() {
 				const movie = data.title_results[0];
 
 				setFeaturedMovie({
-					title: movie.title || 'Unknown Title',
+					title: movie.name || 'Unknown Title',
 					backdropPath: movie.imageUrl || '',
 					overview: movie.plotOverview || 'No overview available.',
 					year: movie.year,
