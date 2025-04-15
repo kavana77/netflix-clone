@@ -1,6 +1,6 @@
 import { FaHeart } from "react-icons/fa";
-import imdbLogo from "../assets/newArrival/icons/imdb.svg";
-import tomatoesLogo from "../assets/newArrival/icons/tomatoes.svg";
+import imdbLogo from "../assets/icons/imdb.svg";
+import tomatoesLogo from "../assets/icons/tomatoes.svg";
 import { IMovieList } from "../types/movieList.";
 
 

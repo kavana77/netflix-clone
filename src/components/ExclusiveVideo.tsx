@@ -1,12 +1,11 @@
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import play from "../assets/exclusiveVideos/play.png";
+import play from "../assets/images/play.png";
 import { videos } from "../utils/constant";
 import useHorizontalScroll from "../hooks/useHorizontalScroll";
 
 
 export default function ExclusiveVideos() {
   const {scrollRef,scroll} = useHorizontalScroll()
-
   return (
     <section className="px-8 py-20">
       {/* Section Header */}
