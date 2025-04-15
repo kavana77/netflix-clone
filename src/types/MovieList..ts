@@ -1,4 +1,5 @@
 export interface IMovieList {
+  id: number;
     title: string;
     poster: string;
     year: string;

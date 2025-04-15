@@ -1,17 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface Movie {
+interface IMovie {
 	id: number;
 	name: string;
 	year: number;
-	image_url: string;
+	imageUrl: string;
 	overview?: string;
-	user_rating?: number;
-	vote_count?: number;
+	userRating?: number;
+	voteCount?: number;
 }
 
 interface SearchState {
-	searchedMovies: Movie[];
+	searchedMovies: IMovie[];
 }
 
 const initialState: SearchState = {
@@ -22,7 +21,7 @@ const searchSlice = createSlice({
 	name: 'search',
 	initialState,
 	reducers: {
-		addSearchedMovie: (state, action: PayloadAction<Movie>) => {
+		addSearchedMovie: (state, action: PayloadAction<IMovie>) => {
 			const exists = state.searchedMovies.some(movie => movie.id === action.payload.id);
 			if (!exists) {
 				state.searchedMovies.push(action.payload);

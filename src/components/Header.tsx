@@ -32,7 +32,7 @@ export default function Header() {
 				const movie = data.title_results[0];
 
 				setFeaturedMovie({
-					title: movie.name || 'Unknown Title',
+					title: movie.title || 'Unknown Title',
 					backdropPath: movie.imageUrl || '',
 					overview: movie.plotOverview || 'No overview available.',
 					year: movie.year,
@@ -40,7 +40,7 @@ export default function Header() {
 					voteCount: movie.voteCount || 0
 				});
 
-				setPoster(movie.image_url || Poster);
+				setPoster(movie.imageUrl || Poster);
 			} else {
 				setFeaturedMovie(DEFAULT_MOVIE);
 				setPoster(Poster);
